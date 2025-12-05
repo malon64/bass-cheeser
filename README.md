@@ -16,6 +16,28 @@ cmake --build build --config Release
 
 After building, JUCE will copy the VST3/standalone targets into your system's default plugin folders (depends on platform). Standalone binaries live in `build/BassCheeser_artefacts`.
 
+### Custom VST3 output location
+You can direct the VST3 bundle to a specific folder by setting `VST3_OUTPUT_DIR`.
+- Via command line: `cmake -S . -B out/build/win -DVST3_OUTPUT_DIR="D:/Plugins/BassCheeser"`
+- Via `CMakePresets.json`, add a preset with `cacheVariables`:
+  ```json
+  {
+    "version": 3,
+    "configurePresets": [
+      {
+        "name": "win-release",
+        "generator": "Ninja",
+        "binaryDir": "out/build/win",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "VST3_OUTPUT_DIR": "${sourceDir}/VST3"
+        }
+      }
+    ]
+  }
+  ```
+Then configure/build using that preset: `cmake --preset win-release && cmake --build --preset win-release`.
+
 ## Running the standalone app
 ```bash
 ./build/BassCheeser_artefacts/Release/Standalone/BassCheeser
