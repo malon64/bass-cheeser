@@ -1,0 +1,27 @@
+build/
+build-*/
+BassCheeser_artefacts/
+VST3/
+
+# CMake/VS
+CMakeFiles/
+CMakeCache.txt
+CMakeUserPresets.json
+*.VC.db
+*.VC.opendb
+*.suo
+*.ncb
+*.opensdf
+*.filters
+*.vcxproj
+*.vcxproj.user
+*.pdb
+*.ilk
+
+# IDE/editor
+**/DerivedData*
+.DS_Store
+*.user
+*.mode1v3
+*.pbxuser
+.vscode/
